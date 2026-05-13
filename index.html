@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Devnex — Tecnología que escala negocios</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="nav-wrapper">
+            <div class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-dot"></span>Devnex
+                </a>
+                <nav class="nav-links">
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="carrito.html">Servicios</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <div class="nav-right">
+                    <span class="nav-status"
+                        ><span class="status-dot"></span>Disponibles ahora</span
+                    >
+                    <button
+                        class="nav-btn"
+                        onclick="window.location.href = 'contactar.html'"
+                    >
+                        Contactar
+                    </button>
+                </div>
+                <button
+                    class="nav-mobile-toggle"
+                    id="mobileToggle"
+                    aria-label="Menú"
+                >
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="nav-mobile-menu" id="mobileMenu">
+                <a href="#mision">Nosotros</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#faq">FAQ</a>
+                <a href="contactar.html" class="mobile-cta">Contactar →</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- HERO -->
+            <section class="hero hero-centered">
+                <div class="hero-noise"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-inner">
+                    <div class="hero-content-centered">
+                        <h1 class="hero-title">
+                            Escalamos<br />
+                            <em>negocios</em><br />
+                            con tecnología
+                        </h1>
+                        <p class="hero-sub">
+                            Combinamos estrategia, desarrollo y automatización
+                            inteligente para empresas que quieren liderar su
+                            industria.
+                        </p>
+                        <div class="hero-actions">
+                            <button
+                                class="btn-primary"
+                                onclick="window.location.href = 'contactar.html'"
+                            >
+                                Iniciar proyecto →
+                            </button>
+                            <button
+                                class="btn-ghost"
+                                onclick="document.getElementById('proyectos').scrollIntoView({ behavior: 'smooth' })"
+                            >
+                                Ver proyectos
+                            </button>
+                        </div>
+                        </div>
+                </div>
+            </section>
+
+            <!-- MARQUEE CLIENTES -->
+            <div class="marquee-wrap">
+                <div class="marquee-label">Confían en nosotros</div>
+                <div class="marquee-track-wrap">
+                    <div class="marquee-track">
+                        <span>TechCore</span><span>Zentrix</span
+                        ><span>NovaSys</span><span>Cloudify</span
+                        ><span>BitForge</span><span>Orbital</span
+                        ><span>Nexlink</span><span>PulseIO</span
+                        ><span>DataBridge</span><span>Synapse</span>
+                        <span>TechCore</span><span>Zentrix</span
+                        ><span>NovaSys</span><span>Cloudify</span
+                        ><span>BitForge</span><span>Orbital</span
+                        ><span>Nexlink</span><span>PulseIO</span
+                        ><span>DataBridge</span><span>Synapse</span>
+                        <span>TechCore</span><span>Zentrix</span
+                        ><span>NovaSys</span><span>Cloudify</span
+                        ><span>BitForge</span><span>Orbital</span
+                        ><span>Nexlink</span><span>PulseIO</span
+                        ><span>DataBridge</span><span>Synapse</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- NÚMEROS -->
+            <section class="numbers-section">
+                <div class="numbers-inner">
+                    <div class="number-item">
+                        <span class="ni-num">5+</span>
+                        <span class="ni-label">Años de experiencia</span>
+                    </div>
+                    <div class="number-item">
+                        <span class="ni-num">48+</span>
+                        <span class="ni-label">Proyectos entregados</span>
+                    </div>
+                    <div class="number-item">
+                        <span class="ni-num">12</span>
+                        <span class="ni-label">Países atendidos</span>
+                    </div>
+                    <div class="number-item">
+                        <span class="ni-num">98%</span>
+                        <span class="ni-label">Clientes satisfechos</span>
+                    </div>
+                </div>
+            </section>
+            <section id="Servicios" class="section">
+                <div class="services-header">
+                    <div>
+                        <span class="section-tag">Nuestras Soluciones</span>
+                        <h2 class="section-title">Lo que construimos<br>para ti</h2>
+                    </div>
+                    <p class="services-sub">
+                        Soluciones tecnológicas diseñadas para resolver problemas reales y escalar tu capacidad operativa.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card" data-id="web">
+                        <div class="service-check">✓</div>
+                        <div class="sc-top">
+                            <span class="service-icon">⬡</span>
+                            <span class="sc-num">01</span>
+                        </div>
+                        <h3>Desarrollo Web & Apps</h3>
+                        <p>Sitios y plataformas a medida, rápidas y escalables.</p>
+                        <ul>
+                            <li>Frontend</li>
+                            <li>Backend</li>
+                            <li>UX/UI</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card" data-id="ia">
+                        <div class="service-check">✓</div>
+                        <div class="sc-top">
+                            <span class="service-icon">◎</span>
+                            <span class="sc-num">02</span>
+                        </div>
+                        <h3>Automatización con IA</h3>
+                        <p>Flujos inteligentes que eliminan tareas repetitivas.</p>
+                        <ul>
+                            <li>IA</li>
+                            <li>Bots</li>
+                            <li>API</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card" data-id="data">
+                        <div class="service-check">✓</div>
+                        <div class="sc-top">
+                            <span class="service-icon">◻</span>
+                            <span class="sc-num">03</span>
+                        </div>
+                        <h3>Análisis de Datos</h3>
+                        <p>Dashboards y modelos predictivos para mejores decisiones.</p>
+                        <ul>
+                            <li>BI</li>
+                            <li>Analytics</li>
+                            <li>Python</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card" data-id="ecommerce">
+                        <div class="service-check">✓</div>
+                        <div class="sc-top">
+                            <span class="service-icon">◉</span>
+                            <span class="sc-num">04</span>
+                        </div>
+                        <h3>E-commerce</h3>
+                        <p>Tiendas en línea completas con pasarelas integradas.</p>
+                        <ul>
+                            <li>Shopify</li>
+                            <li>WooCommerce</li>
+                            <li>Custom</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+                <!-- CARRITO FLOTANTE -->
+                <div class="cart-bar" id="cartBar">
+                    <div class="cart-info">
+                        <span class="cart-icon">🛒</span>
+                        <span id="cartCount">0 servicio seleccionado</span>
+                    </div>
+                    <div class="cart-services" id="cartServices"></div>
+                    <button onclick="irAContacto()" class="nav-btn">Solicitar cotización</button>
+                </div>
+            </section>
+
+            <!-- PROCESO -->
+            <section class="section process-section">
+                <div class="process-header">
+                    <div class="section-tag">Proceso</div>
+                    <h2 class="section-title">
+                        De idea a producto<br />en 4 pasos
+                    </h2>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="ps-num">01</div>
+                        <div class="ps-line"></div>
+                        <h3>Descubrimiento</h3>
+                        <p>
+                            Analizamos tu negocio, objetivos y oportunidades de
+                            mejora para definir el mejor camino.
+                        </p>
+                    </div>
+                    <div class="process-step">
+                        <div class="ps-num">02</div>
+                        <div class="ps-line"></div>
+                        <h3>Estrategia</h3>
+                        <p>
+                            Diseñamos una solución clara, personalizada y
+                            escalable con tiempos y alcance definidos.
+                        </p>
+                    </div>
+                    <div class="process-step">
+                        <div class="ps-num">03</div>
+                        <div class="ps-line"></div>
+                        <h3>Desarrollo</h3>
+                        <p>
+                            Construimos sistemas robustos, optimizados y
+                            medibles con entregas iterativas.
+                        </p>
+                    </div>
+                    <div class="process-step">
+                        <div class="ps-num">04</div>
+                        <div class="ps-line"></div>
+                        <h3>Crecimiento</h3>
+                        <p>
+                            Monitoreamos, ajustamos y escalamos junto a tu
+                            negocio de forma continua.
+                        </p>
+                    </div>
+                </div>
+                <div class="process-cta">
+                    <button
+                        class="btn-primary"
+                        onclick="window.location.href = 'contactar.html'"
+                    >
+                        Iniciar ahora →
+                    </button>
+                </div>
+            </section>
+
+            <!-- CARRUSEL PROYECTOS -->
+            <div class="img-scroll-wrap">
+                <div class="img-scroll-track left">
+                    <img
+                        src="https://www.titanui.com/wp-content/uploads/2025/10/21/aidea-saas-dashboard-ui-kit.webp"
+                        alt=""
+                    />
+                    <img
+                        src="https://cdn.prod.website-files.com/5f16d69f1760cdba99c3ce6e/673c8e25b0be5dd96d25e5a5_64b10c2aa24dbe4c82d6fa4d_11.png"
+                        alt=""
+                    />
+                    <img
+                        src="https://framerusercontent.com/images/juIgFVAOhsIo2TQvdl3am6Bp7w.png?width=2160&height=1534"
+                        alt=""
+                    />
+                    <img
+                        src="https://preview.redd.it/what-exactly-is-this-saas-ui-style-called-neon-grid-3d-v0-g70boej02qwe1.png?width=640&crop=smart&auto=webp&s=f8482c7e18ef972d7033864b88325ee93d3d7049"
+                        alt=""
+                    />
+                    <img
+                        src="https://miro.medium.com/v2/resize:fit:1400/1*g-vD8i6Gf-t-m9zwk8NJjg.png"
+                        alt=""
+                    />
+                    <img
+                        src="https://www.titanui.com/wp-content/uploads/2025/10/21/aidea-saas-dashboard-ui-kit.webp"
+                        alt=""
+                    />
+                    <img
+                        src="https://cdn.prod.website-files.com/5f16d69f1760cdba99c3ce6e/673c8e25b0be5dd96d25e5a5_64b10c2aa24dbe4c82d6fa4d_11.png"
+                        alt=""
+                    />
+                    <img
+                        src="https://framerusercontent.com/images/juIgFVAOhsIo2TQvdl3am6Bp7w.png?width=2160&height=1534"
+                        alt=""
+                    />
+                </div>
+            </div>
+            <div class="img-scroll-wrap" style="margin-top: 16px">
+                <div class="img-scroll-track right">
+                    <img
+                        src="https://miro.medium.com/v2/resize:fit:1400/1*g-vD8i6Gf-t-m9zwk8NJjg.png"
+                        alt=""
+                    />
+                    <img
+                        src="https://preview.redd.it/what-exactly-is-this-saas-ui-style-called-neon-grid-3d-v0-g70boej02qwe1.png?width=640&crop=smart&auto=webp&s=f8482c7e18ef972d7033864b88325ee93d3d7049"
+                        alt=""
+                    />
+                    <img
+                        src="https://www.titanui.com/wp-content/uploads/2025/10/21/aidea-saas-dashboard-ui-kit.webp"
+                        alt=""
+                    />
+                    <img
+                        src="https://framerusercontent.com/images/juIgFVAOhsIo2TQvdl3am6Bp7w.png?width=2160&height=1534"
+                        alt=""
+                    />
+                    <img
+                        src="https://cdn.prod.website-files.com/5f16d69f1760cdba99c3ce6e/673c8e25b0be5dd96d25e5a5_64b10c2aa24dbe4c82d6fa4d_11.png"
+                        alt=""
+                    />
+                    <img
+                        src="https://miro.medium.com/v2/resize:fit:1400/1*g-vD8i6Gf-t-m9zwk8NJjg.png"
+                        alt=""
+                    />
+                    <img
+                        src="https://preview.redd.it/what-exactly-is-this-saas-ui-style-called-neon-grid-3d-v0-g70boej02qwe1.png?width=640&crop=smart&auto=webp&s=f8482c7e18ef972d7033864b88325ee93d3d7049"
+                        alt=""
+                    />
+                    <img
+                        src="https://www.titanui.com/wp-content/uploads/2025/10/21/aidea-saas-dashboard-ui-kit.webp"
+                        alt=""
+                    />
+                </div>
+            </div>
+
+            <!-- CASOS DE ÉXITO -->
+            <section id="proyectos" class="section cases-section">
+                <div class="cases-header">
+                    <div>
+                        <div class="section-tag">Resultados</div>
+                        <h2 class="section-title">Casos de éxito</h2>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button id="prevBtn" aria-label="Anterior">‹</button>
+                        <button id="nextBtn" aria-label="Siguiente">›</button>
+                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="slide active">
+                        <div class="slide-image">
+                            <img
+                                src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/292113560/original/9efb87c6de5c155f86d432d423388dc5d6fb74bb/design-dashboard-design-and-saas-dashboard-ui-ux.jpg"
+                                alt="Automatización SaaS"
+                            />
+                        </div>
+                        <div class="slide-content">
+                            <div class="slide-tags">
+                                <span>70% más rápido</span
+                                ><span>−40% tickets</span><span>2 semanas</span>
+                            </div>
+                            <h3>Automatización para SaaS</h3>
+                            <p>
+                                Implementamos un sistema de soporte automatizado
+                                que redujo los tiempos de respuesta y la carga
+                                operativa del equipo, liberando recursos para
+                                tareas de mayor valor.
+                            </p>
+                            <button
+                                class="btn-ghost"
+                                onclick="
+                                    window.location.href = 'contactar.html'
+                                "
+                            >
+                                Ver detalles →
+                            </button>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-image">
+                            <img
+                                src="https://framerusercontent.com/images/juIgFVAOhsIo2TQvdl3am6Bp7w.png?width=2160&height=1534"
+                                alt="Dashboard avanzado"
+                            />
+                        </div>
+                        <div class="slide-content">
+                            <div class="slide-tags">
+                                <span>Tiempo real</span
+                                ><span>+60% eficiencia</span
+                                ><span>UX optimizada</span>
+                            </div>
+                            <h3>Dashboard avanzado</h3>
+                            <p>
+                                Desarrollamos un dashboard interactivo que
+                                centraliza métricas clave en tiempo real,
+                                facilitando decisiones basadas en datos. La
+                                solución redujo tiempos de análisis y mejoró la
+                                experiencia del equipo.
+                            </p>
+                            <button
+                                class="btn-ghost"
+                                onclick="
+                                    window.location.href = 'contactar.html'
+                                "
+                            >
+                                Ver detalles →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- POR QUÉ ELEGIRNOS -->
+            <section class="section why-section">
+                <div class="why-inner">
+                    <div class="why-left">
+                        <div class="section-tag">Diferencial</div>
+                        <h2 class="section-title">¿Por qué<br />elegirnos?</h2>
+                        <p>
+                            No somos una agencia más. Somos el equipo técnico
+                            que tu empresa necesita para crecer sin límites.
+                        </p>
+                        <button
+                            class="btn-primary"
+                            onclick="window.location.href = 'contactar.html'"
+                        >
+                            Hablar con nosotros →
+                        </button>
+                    </div>
+                    <div class="why-right">
+                        <div class="why-item">
+                            <div class="wi-icon">⬡</div>
+                            <div>
+                                <h3>Estrategias personalizadas</h3>
+                                <p>
+                                    Cada proyecto se adapta a tu negocio, sin
+                                    plantillas genéricas.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="wi-icon">⬡</div>
+                            <div>
+                                <h3>Integración total</h3>
+                                <p>
+                                    Conectamos sistemas, datos y herramientas en
+                                    un flujo real y eficiente.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="wi-icon">⬡</div>
+                            <div>
+                                <h3>Enfoque humano + IA</h3>
+                                <p>
+                                    Automatización sin perder el control ni la
+                                    visión estratégica.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="wi-icon">⬡</div>
+                            <div>
+                                <h3>Entrega completa</h3>
+                                <p>
+                                    Desde la idea hasta la implementación y
+                                    optimización continua.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section id="faq" class="section faq-section">
+                <div class="faq-inner">
+                    <div class="faq-left">
+                        <div class="section-tag">FAQ</div>
+                        <h2 class="section-title">Preguntas<br />frecuentes</h2>
+                        <p>¿No encuentras lo que buscas?</p>
+                        <button
+                            class="btn-ghost"
+                            onclick="window.location.href = 'contactar.html'"
+                            style="margin-top: 16px"
+                        >
+                            Contáctanos →
+                        </button>
+                    </div>
+                    <div class="faq-right">
+                        <details>
+                            <summary>¿Qué incluye cada servicio?</summary>
+                            <p>
+                                Cada servicio incluye análisis inicial,
+                                desarrollo o implementación, pruebas de calidad,
+                                entrega final y soporte post-lanzamiento. El
+                                alcance exacto se define en la consulta inicial
+                                sin costo.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>¿Cuánto tarda un proyecto?</summary>
+                            <p>
+                                Depende del alcance. Proyectos simples pueden
+                                estar listos en 2–3 semanas; proyectos complejos
+                                toman entre 6 y 12 semanas. Siempre definimos
+                                tiempos claros desde el inicio.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>
+                                ¿Puedo contratar varios servicios juntos?
+                            </summary>
+                            <p>
+                                Sí, muchos clientes contratan paquetes de
+                                servicios complementarios. Usa el selector de
+                                arriba para elegir lo que necesitas y te haremos
+                                una propuesta integrada.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>
+                                ¿Ofrecen soporte después de la entrega?
+                            </summary>
+                            <p>
+                                Sí. Todos los proyectos incluyen período de
+                                soporte inicial. También ofrecemos planes de
+                                mantenimiento continuo para asegurar que todo
+                                funcione perfectamente a largo plazo.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>
+                                ¿Trabajan con empresas de cualquier tamaño?
+                            </summary>
+                            <p>
+                                Desde startups hasta empresas consolidadas.
+                                Adaptamos nuestro enfoque según el tamaño,
+                                sector y necesidades específicas de cada
+                                organización.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>¿Tienen costos ocultos?</summary>
+                            <p>
+                                Nunca. Todas nuestras propuestas son detalladas,
+                                transparentes y sin letra chica. El precio
+                                acordado es el precio final.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-cta">
+                <div class="about-cta-inner">
+                    <div class="section-tag">Trabajemos juntos</div>
+                    <h2>¿Listo para dar el<br />siguiente paso?</h2>
+                    <p>
+                        Ya sea que tengas un proyecto definido o apenas estés
+                        explorando, nuestro equipo está listo para escucharte.
+                    </p>
+                    <div class="about-cta-actions">
+                        <button
+                            class="btn-primary btn-large"
+                            onclick="window.location.href = 'contactar.html'"
+                        >
+                            Iniciar conversación →
+                        </button>
+                        <button
+                            class="btn-ghost btn-large"
+                            onclick="window.location.href = 'carrito.html'"
+                        >
+                            Ver servicios
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <div class="footer-main">
+                    <div class="footer-links">
+                        <div>
+                            <h4>Empresa</h4>
+                            <a href="#mision">Nosotros</a>
+                            <a href="#blog">Blog</a>
+                        </div>
+                        <div>
+                            <h4>Servicios</h4>
+                            <a href="#servicios">Estrategia Digital</a>
+                            <a href="#servicios">Desarrollo Web</a>
+                            <a href="#servicios">IA & Automatización</a>
+                            <a href="#servicios">Cloud & Datos</a>
+                        </div>
+                        <div id="contacto">
+                            <h4>Contacto</h4>
+                            <p>+52 000 000 0000</p>
+                            <p>email@devnex.com</p>
+                            <a
+                                href="contactar.html"
+                                style="margin-top: 12px; display: inline-block"
+                                >→ Formulario de contacto</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="copy">
+                        © Devnex 2026 · Tecnología que escala negocios
+                    </p>
+                    <div class="footer-social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+
+        <script defer src="js/main.js"></script>
+    </body>
+</html>

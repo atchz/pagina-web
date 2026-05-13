@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cotizar — Devnex</title>
+
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/carrito.css" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    </head>
+
+    <body>
+        <header class="nav-wrapper">
+            <div class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-dot"></span>Devnex
+                </a>
+                <nav class="nav-links">
+                    <a href="#mision">Nosotros</a>
+                    <a href="carrito.html">Servicios</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <div class="nav-right">
+                    <span class="nav-status"
+                        ><span class="status-dot"></span>Disponibles ahora</span
+                    >
+                    <button
+                        class="nav-btn"
+                        onclick="window.location.href = 'contactar.html'"
+                    >
+                        Contactar
+                    </button>
+                </div>
+                <button
+                    class="nav-mobile-toggle"
+                    id="mobileToggle"
+                    aria-label="Menú"
+                >
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="nav-mobile-menu" id="mobileMenu">
+                <a href="#mision">Nosotros</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#faq">FAQ</a>
+                <a href="contactar.html" class="mobile-cta">Contactar →</a>
+            </div>
+        </header>
+
+        <main class="cart-main">
+            <div class="cart-hero">
+                <span class="badge">✦ Cotizador sin compromiso</span>
+
+                <h1>Arma tu solución a medida</h1>
+
+                <p>
+                    Selecciona los servicios que necesitas, ajusta cantidades y
+                    recibe tu cotización por correo al instante.
+                </p>
+            </div>
+
+            <div class="cart-layout">
+                <section class="catalog">
+                    <h2 class="catalog-title">Servicios disponibles</h2>
+
+                    <div class="catalog-grid" id="catalogGrid"></div>
+                </section>
+
+                <aside class="cart-panel" id="cartPanel">
+                    <div class="cart-header">
+                        <h2>Tu cotización</h2>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </div>
+
+                    <div class="cart-empty" id="cartEmpty">
+                        <div class="empty-icon">🛒</div>
+
+                        <p>Agrega servicios para ver tu cotización aquí.</p>
+                    </div>
+
+                    <div class="ticket" id="ticket" style="display: none">
+                        <div class="ticket-header">
+                            <div class="ticket-logo">
+                                <span class="logo-dot"></span> Devnex
+                            </div>
+
+                            <div class="ticket-meta">
+                                <span id="ticketFolio"> FOLIO #DNX-000 </span>
+
+                                <span id="ticketDate"></span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-perforation"></div>
+
+                        <div class="ticket-body">
+                            <div class="ticket-section-label">
+                                Detalle de servicios
+                            </div>
+
+                            <div id="ticketItems"></div>
+                        </div>
+
+                        <div class="ticket-perforation"></div>
+
+                        <div class="ticket-footer">
+                            <div class="ticket-row">
+                                <span>Subtotal</span>
+                                <span id="ticketSubtotal">$0</span>
+                            </div>
+
+                            <div class="ticket-row muted">
+                                <span>IVA (16%)</span>
+                                <span id="ticketIva">$0</span>
+                            </div>
+
+                            <div class="ticket-row total">
+                                <span>Total</span>
+                                <span id="ticketTotal">$0</span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-perforation"></div>
+
+                        <div class="ticket-note">
+                            Cotización válida por 30 días · Sin costos ocultos ·
+                            Precios en USD
+                        </div>
+                    </div>
+
+                    <div class="send-form" id="sendForm" style="display: none">
+                        <div class="form-group">
+                            <label>Tu nombre *</label>
+
+                            <input
+                                type="text"
+                                id="senderName"
+                                placeholder="Carlos Ramírez"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tu correo *</label>
+
+                            <input
+                                type="email"
+                                id="senderEmail"
+                                placeholder="tu@empresa.com"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Empresa</label>
+
+                            <input
+                                type="text"
+                                id="senderCompany"
+                                placeholder="Nombre de tu empresa"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mensaje (opcional)</label>
+
+                            <textarea
+                                id="senderMessage"
+                                rows="2"
+                                placeholder="Algún detalle adicional..."
+                            ></textarea>
+                        </div>
+
+                        <button
+                            class="btn-primary btn-send"
+                            id="sendBtn"
+                            onclick="sendInvoice()"
+                        >
+                            Enviar cotización al correo →
+                        </button>
+
+                        <p class="send-note">
+                            Recibirás un PDF resumen en tu bandeja de entrada.
+                        </p>
+                    </div>
+
+                    <div
+                        class="cart-actions"
+                        id="cartActions"
+                        style="display: none"
+                    >
+                        <button
+                            class="btn-ghost btn-clear"
+                            onclick="clearCart()"
+                        >
+                            Limpiar carrito
+                        </button>
+                    </div>
+
+                    <div
+                        class="send-success"
+                        id="sendSuccess"
+                        style="display: none"
+                    >
+                        <div class="success-icon">✓</div>
+
+                        <h3>¡Cotización enviada!</h3>
+
+                        <p>
+                            Revisa tu bandeja de entrada. Nuestro equipo te
+                            contactará pronto.
+                        </p>
+
+                        <button
+                            class="btn-ghost"
+                            onclick="resetSuccess()"
+                            style="margin-top: 16px; width: 100%"
+                        >
+                            Nueva cotización
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+        <footer class="footer-mini">
+            <p>© Devnex 2026 · <a href="index.html">Volver al inicio</a></p>
+        </footer>
+
+        <script>
+            const EMAILJS_PUBLIC_KEY = "MqUt4RkwN2KsdE6A-";
+            const EMAILJS_SERVICE_ID = "service_xg1rba6";
+            const EMAILJS_TEMPLATE_ID = "template_hp477aj";
+
+            emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+            const SERVICES = [
+                {
+                    id: "web",
+                    icon: "⬡",
+                    name: "Desarrollo Web & Apps",
+                    desc: "Sitios y plataformas a medida, rápidas y escalables.",
+                    price: 3500,
+                    unit: "proyecto",
+                    tags: ["Frontend", "Backend", "UX/UI"],
+                },
+
+                {
+                    id: "ia",
+                    icon: "◎",
+                    name: "Automatización con IA",
+                    desc: "Flujos inteligentes que eliminan tareas repetitivas.",
+                    price: 2800,
+                    unit: "proyecto",
+                    tags: ["IA", "Bots", "API"],
+                },
+
+                {
+                    id: "data",
+                    icon: "◻",
+                    name: "Análisis de Datos",
+                    desc: "Dashboards y modelos predictivos para mejores decisiones.",
+                    price: 2400,
+                    unit: "proyecto",
+                    tags: ["BI", "Analytics", "Python"],
+                },
+
+                {
+                    id: "ecommerce",
+                    icon: "◉",
+                    name: "E-commerce",
+                    desc: "Tiendas en línea completas con pasarela de pago integrada.",
+                    price: 4200,
+                    unit: "proyecto",
+                    tags: ["Shopify", "WooCommerce", "Custom"],
+                },
+            ];
+
+            let cart = {};
+
+            function renderCatalog() {
+                const grid = document.getElementById("catalogGrid");
+
+                grid.innerHTML = SERVICES.map(
+                    (s) => `
+        <div class="service-item" id="item-${s.id}">
+            <div class="si-top">
+                <div class="si-icon">${s.icon}</div>
+
+                <div class="si-info">
+                    <h3>${s.name}</h3>
+
+                    <p>${s.desc}</p>
+
+                    <div class="si-tags">
+                        ${s.tags.map((t) => `<span>${t}</span>`).join("")}
+                    </div>
+                </div>
+            </div>
+
+            <div class="si-bottom">
+                <div class="si-price">
+                    <span class="price-amount">
+                        $${s.price.toLocaleString()}
+                    </span>
+
+                    <span class="price-unit">
+                        USD / ${s.unit}
+                    </span>
+                </div>
+
+                <div class="si-controls" id="ctrl-${s.id}">
+                    <button
+                        class="btn-add"
+                        onclick="addToCart('${s.id}')"
+                    >
+                        + Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+    `,
+                ).join("");
+            }
+
+            function addToCart(id) {
+                cart[id] = (cart[id] || 0) + 1;
+
+                updateControls(id);
+                updateTicket();
+            }
+
+            function removeFromCart(id) {
+                if (!cart[id]) return;
+
+                cart[id]--;
+
+                if (cart[id] === 0) {
+                    delete cart[id];
+                }
+
+                updateControls(id);
+                updateTicket();
+            }
+
+            function updateControls(id) {
+                const ctrl = document.getElementById(`ctrl-${id}`);
+                const qty = cart[id] || 0;
+                const item = document.getElementById(`item-${id}`);
+
+                if (qty === 0) {
+                    ctrl.innerHTML = `
+            <button
+                class="btn-add"
+                onclick="addToCart('${id}')"
+            >
+                + Agregar
+            </button>
+        `;
+
+                    item.classList.remove("in-cart");
+                } else {
+                    ctrl.innerHTML = `
+            <div class="qty-control">
+                <button
+                    class="qty-btn"
+                    onclick="removeFromCart('${id}')"
+                >
+                    −
+                </button>
+
+                <span class="qty-num">${qty}</span>
+
+                <button
+                    class="qty-btn"
+                    onclick="addToCart('${id}')"
+                >
+                    +
+                </button>
+            </div>
+        `;
+
+                    item.classList.add("in-cart");
+                }
+            }
+
+            function clearCart() {
+                Object.keys(cart).forEach((id) => {
+                    cart[id] = 0;
+
+                    delete cart[id];
+
+                    updateControls(id);
+                });
+
+                cart = {};
+
+                updateTicket();
+            }
+
+            function updateTicket() {
+                const keys = Object.keys(cart);
+
+                const badge = document.getElementById("cartBadge");
+                const empty = document.getElementById("cartEmpty");
+                const ticket = document.getElementById("ticket");
+                const sendForm = document.getElementById("sendForm");
+                const cartActions = document.getElementById("cartActions");
+                const itemsEl = document.getElementById("ticketItems");
+
+                const totalQty = keys.reduce((a, k) => a + cart[k], 0);
+
+                badge.textContent = totalQty;
+
+                if (keys.length === 0) {
+                    empty.style.display = "flex";
+                    ticket.style.display = "none";
+                    sendForm.style.display = "none";
+                    cartActions.style.display = "none";
+
+                    return;
+                }
+
+                empty.style.display = "none";
+                ticket.style.display = "block";
+                sendForm.style.display = "flex";
+                cartActions.style.display = "flex";
+
+                const folio =
+                    "DNX-" + String(Math.floor(Math.random() * 90000) + 10000);
+
+                document.getElementById("ticketFolio").textContent =
+                    "FOLIO #" + folio;
+
+                const now = new Date();
+
+                document.getElementById("ticketDate").textContent =
+                    now.toLocaleDateString("es-MX", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                    });
+
+                let subtotal = 0;
+
+                itemsEl.innerHTML = keys
+                    .map((id) => {
+                        const svc = SERVICES.find((s) => s.id === id);
+                        const qty = cart[id];
+                        const line = svc.price * qty;
+
+                        subtotal += line;
+
+                        return `
+            <div class="ticket-item">
+                <div class="ti-name">
+                    <span class="ti-icon">${svc.icon}</span>
+                    <span>${svc.name}</span>
+                </div>
+
+                <div class="ti-detail">
+                    <span class="ti-qty">
+                        ${qty} × $${svc.price.toLocaleString()}
+                    </span>
+
+                    <span class="ti-line">
+                        $${line.toLocaleString()}
+                    </span>
+                </div>
+            </div>
+        `;
+                    })
+                    .join("");
+
+                const iva = subtotal * 0.16;
+                const total = subtotal + iva;
+
+                document.getElementById("ticketSubtotal").textContent =
+                    "$" + subtotal.toLocaleString();
+
+                document.getElementById("ticketIva").textContent =
+                    "$" + Math.round(iva).toLocaleString();
+
+                document.getElementById("ticketTotal").textContent =
+                    "$" + Math.round(total).toLocaleString();
+
+                window._lastFolio = folio;
+                window._lastSubtotal = subtotal;
+                window._lastIva = Math.round(iva);
+                window._lastTotal = Math.round(total);
+
+                window._lastDate =
+                    document.getElementById("ticketDate").textContent;
+            }
+
+            function sendInvoice() {
+                const name = document.getElementById("senderName").value.trim();
+
+                const email = document
+                    .getElementById("senderEmail")
+                    .value.trim();
+
+                const company = document
+                    .getElementById("senderCompany")
+                    .value.trim();
+
+                const message = document
+                    .getElementById("senderMessage")
+                    .value.trim();
+
+                const btn = document.getElementById("sendBtn");
+
+                if (!name || !email) {
+                    btn.textContent = "⚠ Completa nombre y correo";
+
+                    btn.style.background = "rgba(239,68,68,0.15)";
+                    btn.style.color = "#f87171";
+                    btn.style.border = "1px solid rgba(239,68,68,0.3)";
+
+                    setTimeout(() => {
+                        btn.textContent = "Enviar cotización al correo →";
+
+                        btn.style.background = "";
+                        btn.style.color = "";
+                        btn.style.border = "";
+                    }, 2500);
+
+                    return;
+                }
+
+                const lines = Object.keys(cart)
+                    .map((id) => {
+                        const svc = SERVICES.find((s) => s.id === id);
+                        const qty = cart[id];
+
+                        return `${svc.name} (${qty} × $${svc.price.toLocaleString()} USD) = $${(svc.price * qty).toLocaleString()} USD`;
+                    })
+                    .join("\n");
+
+                const templateParams = {
+                    to_name: name,
+                    to_email: email,
+                    company: company || "—",
+                    folio: window._lastFolio,
+                    date: window._lastDate,
+                    services: lines,
+                    subtotal:
+                        "$" + window._lastSubtotal.toLocaleString() + " USD",
+                    iva: "$" + window._lastIva.toLocaleString() + " USD",
+                    total: "$" + window._lastTotal.toLocaleString() + " USD",
+                    message: message || "Sin comentarios adicionales.",
+                    from_name: "Devnex",
+                    reply_to: "email@devnex.com",
+                };
+
+                btn.textContent = "Enviando…";
+                btn.disabled = true;
+
+                emailjs
+                    .send(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
+                        templateParams,
+                    )
+                    .then(() => {
+                        document.getElementById("ticket").style.display =
+                            "none";
+
+                        document.getElementById("sendForm").style.display =
+                            "none";
+
+                        document.getElementById("cartActions").style.display =
+                            "none";
+
+                        document.getElementById("sendSuccess").style.display =
+                            "flex";
+                    })
+                    .catch((err) => {
+                        console.error("EmailJS error:", err);
+
+                        btn.textContent = "Error al enviar. Intenta de nuevo.";
+
+                        btn.style.background = "rgba(239,68,68,0.15)";
+
+                        btn.style.color = "#f87171";
+
+                        btn.style.border = "1px solid rgba(239,68,68,0.3)";
+
+                        btn.disabled = false;
+
+                        setTimeout(() => {
+                            btn.textContent = "Enviar cotización al correo →";
+
+                            btn.style.background = "";
+                            btn.style.color = "";
+                            btn.style.border = "";
+                        }, 3000);
+                    });
+            }
+
+            function resetSuccess() {
+                clearCart();
+
+                document.getElementById("sendSuccess").style.display = "none";
+
+                document.getElementById("cartEmpty").style.display = "flex";
+
+                document.getElementById("senderName").value = "";
+                document.getElementById("senderEmail").value = "";
+                document.getElementById("senderCompany").value = "";
+                document.getElementById("senderMessage").value = "";
+
+                const btn = document.getElementById("sendBtn");
+
+                btn.textContent = "Enviar cotización al correo →";
+                btn.disabled = false;
+
+                btn.style.background = "";
+                btn.style.color = "";
+                btn.style.border = "";
+            }
+
+            renderCatalog();
+            updateTicket();
+        </script>
+    </body>
+</html>

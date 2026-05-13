@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contactar — Devnex</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/contactar.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>
+            emailjs.init({ publicKey: "MqUt4RkwN2KsdE6A" });
+        </script>
+    </head>
+    <body>
+        <header class="nav-wrapper">
+            <div class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-dot"></span>Devnex
+                </a>
+                <nav class="nav-links">
+                    <a href="#mision">Nosotros</a>
+                    <a href="carrito.html">Servicios</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <div class="nav-right">
+                    <span class="nav-status"
+                        ><span class="status-dot"></span>Disponibles ahora</span
+                    >
+                    <button
+                        class="nav-btn"
+                        onclick="window.location.href = 'contactar.html'"
+                    >
+                        Contactar
+                    </button>
+                </div>
+                <button
+                    class="nav-mobile-toggle"
+                    id="mobileToggle"
+                    aria-label="Menú"
+                >
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="nav-mobile-menu" id="mobileMenu">
+                <a href="#mision">Nosotros</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#faq">FAQ</a>
+                <a href="contactar.html" class="mobile-cta">Contactar →</a>
+            </div>
+        </header>
+
+        <main class="contact-main">
+            <!-- HERO CONTACTO -->
+            <div class="contact-hero">
+                <div class="contact-hero-inner">
+                    <span class="badge">✦ Respuesta en menos de 24h</span>
+                    <h1>Tu crecimiento empieza con una conversación</h1>
+                    <p>
+                        Ya sea que tengas una pregunta, necesites orientación
+                        experta o quieras explorar cómo podemos impulsar tu
+                        negocio, nuestro equipo está listo para escucharte.
+                    </p>
+                </div>
+            </div>
+
+            <!-- GRID PRINCIPAL -->
+            <div class="contact-grid">
+                <!-- COLUMNA IZQUIERDA: INFO -->
+                <aside class="contact-aside">
+                    <div class="aside-block">
+                        <div class="aside-icon">✉</div>
+                        <div>
+                            <p class="aside-label">Email</p>
+                            <a
+                                href="mailto:email@devnex.com"
+                                class="aside-value"
+                                >email@devnex.com</a
+                            >
+                        </div>
+                    </div>
+                    <div class="aside-block">
+                        <div class="aside-icon">📞</div>
+                        <div>
+                            <p class="aside-label">Teléfono</p>
+                            <a href="tel:+520000000000" class="aside-value"
+                                >+52 000 000 0000</a
+                            >
+                        </div>
+                    </div>
+                    <div class="aside-block">
+                        <div class="aside-icon">📍</div>
+                        <div>
+                            <p class="aside-label">Ubicación</p>
+                            <p class="aside-value">Monterrey, México</p>
+                        </div>
+                    </div>
+
+                    <div class="aside-divider"></div>
+
+                    <p class="aside-sub">¿Prefieres una llamada rápida?</p>
+                    <p class="aside-note">
+                        Escríbenos y agendamos una sesión de descubrimiento sin
+                        costo ni compromiso.
+                    </p>
+
+                    <div class="aside-stats">
+                        <div class="stat">
+                            <span class="stat-num">48+</span>
+                            <span class="stat-label">Proyectos entregados</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">98%</span>
+                            <span class="stat-label">Clientes satisfechos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">&lt;24h</span>
+                            <span class="stat-label">Tiempo de respuesta</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- COLUMNA DERECHA: FORMULARIO -->
+                <div class="contact-form-wrap">
+                    <!-- SUCCESS -->
+                    <div
+                        class="form-success"
+                        id="formSuccess"
+                        style="display: none"
+                    >
+                        <div class="success-icon">✓</div>
+                        <h3>¡Mensaje enviado!</h3>
+                        <p>
+                            Gracias por contactarnos. Nuestro equipo revisará tu
+                            mensaje y te responderá en menos de 24 horas.
+                        </p>
+                        <a
+                            href="index.html"
+                            class="btn-primary"
+                            style="
+                                display: inline-block;
+                                text-decoration: none;
+                                margin-top: 20px;
+                            "
+                            >← Volver al inicio</a
+                        >
+                    </div>
+
+                    <div id="formContainer">
+                        <h2 class="form-title">Cuéntanos sobre tu proyecto</h2>
+                        <p class="form-sub">
+                            Todos los campos marcados con * son obligatorios.
+                        </p>
+
+                        <div class="form-body">
+                            <!-- FILA 1 -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre"
+                                        >Nombre completo *</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="nombre"
+                                        placeholder="Ej. Carlos Ramírez"
+                                        required
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="cargo">Cargo o rol *</label>
+                                    <input
+                                        type="text"
+                                        id="cargo"
+                                        placeholder="Ej. CEO, CTO, Director"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- FILA 2 -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="empresa">Empresa *</label>
+                                    <input
+                                        type="text"
+                                        id="empresa"
+                                        placeholder="Nombre de tu empresa"
+                                        required
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        placeholder="tu@empresa.com"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- FILA 3 -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tel">Teléfono</label>
+                                    <input
+                                        type="tel"
+                                        id="tel"
+                                        placeholder="+52 000 000 0000"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="ciudad">Ciudad / País</label>
+                                    <input
+                                        type="text"
+                                        id="ciudad"
+                                        placeholder="Monterrey, México"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Me interesa *</label>
+                                <div class="services-check" id="servicesCheck">
+                                    <label class="svc-option">
+                                        <input
+                                            type="checkbox"
+                                            value="Desarrollo Web & Apps"
+                                        />
+                                        <span>Desarrollo Web & Apps</span>
+                                    </label>
+                                    <label class="svc-option">
+                                        <input
+                                            type="checkbox"
+                                            value="Automatización con IA"
+                                        />
+                                        <span>Automatización con IA</span>
+                                    </label>
+                                    <label class="svc-option">
+                                        <input
+                                            type="checkbox"
+                                            value="Análisis de Datos"
+                                        />
+                                        <span>Análisis de Datos</span>
+                                    </label>
+                                    <label class="svc-option">
+                                        <input
+                                            type="checkbox"
+                                            value="E-commerce"
+                                        />
+                                        <span>E-commerce</span>
+                                    </label>
+                                    <label class="svc-option">
+                                        <input
+                                            type="checkbox"
+                                            value="Otro / Consulta general"
+                                        />
+                                        <span>Otro / Consulta general</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- PRESUPUESTO -->
+                            <div class="form-group full-width">
+                                <label for="presupuesto"
+                                    >Presupuesto aproximado</label
+                                >
+                                <select id="presupuesto">
+                                    <option value="" disabled selected>
+                                        Selecciona un rango
+                                    </option>
+                                    <option value="<5k">
+                                        Menos de $5,000 USD
+                                    </option>
+                                    <option value="5-15k">
+                                        $5,000 – $15,000 USD
+                                    </option>
+                                    <option value="15-50k">
+                                        $15,000 – $50,000 USD
+                                    </option>
+                                    <option value="50k+">
+                                        Más de $50,000 USD
+                                    </option>
+                                    <option value="indefinido">
+                                        No lo tengo definido aún
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- COMENTARIOS -->
+                            <div class="form-group full-width">
+                                <label for="comentarios"
+                                    >Cuéntanos más sobre tu proyecto</label
+                                >
+                                <textarea
+                                    id="comentarios"
+                                    rows="5"
+                                    placeholder="Describe brevemente qué necesitas, tus objetivos o cualquier detalle relevante..."
+                                ></textarea>
+                            </div>
+
+                            <!-- PRIVACIDAD -->
+                            <p class="privacy-text">
+                                Al enviar este formulario, aceptas que Devnex
+                                procese tu información para responder a tu
+                                solicitud. No compartimos tus datos con
+                                terceros.
+                            </p>
+
+                            <!-- SUBMIT -->
+                            <button
+                                class="btn-primary btn-submit"
+                                id="submitBtn"
+                                onclick="submitForm()"
+                            >
+                                Enviar mensaje →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER SIMPLE -->
+        <footer class="footer-mini">
+            <p>© Devnex 2026 · <a href="index.html">Volver al inicio</a></p>
+        </footer>
+
+        <script defer src="js/main.js"></script>
+    </body>
+</html>
