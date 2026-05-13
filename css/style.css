@@ -47,6 +47,7 @@ body {
     overflow-x: hidden;
 }
 
+
 .nav-wrapper {
     position: sticky;
     top: 0;
@@ -663,7 +664,7 @@ button {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-bottom: 32px;
 }
@@ -753,6 +754,7 @@ button {
     color: var(--muted);
     padding: 3px 0 3px 14px;
     position: relative;
+    cursor: default;
 }
 .service-card li::before {
     content: "›";
@@ -760,6 +762,26 @@ button {
     left: 0;
     color: var(--lime);
     font-weight: 700;
+}
+
+/* Tooltip */
+.service-card li .tooltip {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 110%;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+.service-card li:hover .tooltip {
+    display: block;
 }
 
 .services-footer {

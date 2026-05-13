@@ -367,6 +367,8 @@
     color: var(--text);
 }
 
+
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
     .contact-grid {

@@ -22,11 +22,11 @@
                 <a href="index.html" class="logo">
                     <span class="logo-dot"></span>Devnex
                 </a>
-                <nav class="nav-links">
-                    <a href="#mision">Nosotros</a>
+               <nav class="nav-links">
+                    <a href="nosotros.html">Nosotros</a>
                     <a href="carrito.html">Servicios</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#faq">FAQ</a>
+                    <a href="index.html#proyectos">Proyectos</a>
+                    <a href="index.html#faq">FAQ</a>
                 </nav>
                 <div class="nav-right">
                     <span class="nav-status"
@@ -155,6 +155,7 @@
                                 type="email"
                                 id="senderEmail"
                                 placeholder="tu@empresa.com"
+                                required
                             />
                         </div>
 
@@ -241,46 +242,61 @@
 
             emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
-            const SERVICES = [
-                {
-                    id: "web",
-                    icon: "⬡",
-                    name: "Desarrollo Web & Apps",
-                    desc: "Sitios y plataformas a medida, rápidas y escalables.",
-                    price: 3500,
-                    unit: "proyecto",
-                    tags: ["Frontend", "Backend", "UX/UI"],
-                },
+                const SERVICES = [
+                    {
+                        id: "web",
+                        icon: "⬡",
+                        name: "Desarrollo Web & Apps",
+                        desc: "Sitios y plataformas a medida, rápidas y escalables.",
+                        price: 3500,
+                        unit: "proyecto",
+                        tags: [
+                            { label: "Frontend", tooltip: "Interfaces rápidas, responsivas y modernas" },
+                            { label: "Backend",  tooltip: "APIs robustas, bases de datos y lógica de negocio" },
+                            { label: "UX/UI",    tooltip: "Diseño centrado en el usuario con impacto visual" },
+                        ],
+                    },
 
-                {
-                    id: "ia",
-                    icon: "◎",
-                    name: "Automatización con IA",
-                    desc: "Flujos inteligentes que eliminan tareas repetitivas.",
-                    price: 2800,
-                    unit: "proyecto",
-                    tags: ["IA", "Bots", "API"],
-                },
+                    {
+                        id: "ia",
+                        icon: "◎",
+                        name: "Automatización con IA",
+                        desc: "Flujos inteligentes que eliminan tareas repetitivas.",
+                        price: 2800,
+                        unit: "proyecto",
+                        tags: [
+                            { label: "IA",   tooltip: "Soluciones inteligentes con modelos de lenguaje" },
+                            { label: "Bots", tooltip: "Automatización de tareas y atención al cliente" },
+                            { label: "API",  tooltip: "Integración de servicios externos a tu plataforma" },
+                        ],
+                    },
 
-                {
-                    id: "data",
-                    icon: "◻",
-                    name: "Análisis de Datos",
-                    desc: "Dashboards y modelos predictivos para mejores decisiones.",
-                    price: 2400,
-                    unit: "proyecto",
-                    tags: ["BI", "Analytics", "Python"],
-                },
-
-                {
-                    id: "ecommerce",
-                    icon: "◉",
-                    name: "E-commerce",
-                    desc: "Tiendas en línea completas con pasarela de pago integrada.",
-                    price: 4200,
-                    unit: "proyecto",
-                    tags: ["Shopify", "WooCommerce", "Custom"],
-                },
+                    {
+                        id: "data",
+                        icon: "◻",
+                        name: "Análisis de Datos",
+                        desc: "Dashboards y modelos predictivos para mejores decisiones.",
+                        price: 2400,
+                        unit: "proyecto",
+                        tags: [
+                            { label: "BI",        tooltip: "Dashboards y reportes para tomar mejores decisiones" },
+                            { label: "Analytics", tooltip: "Análisis de datos para entender tu negocio" },
+                            { label: "Python",    tooltip: "Scripts y automatizaciones para optimizar procesos" },
+                        ],
+                    },
+                    {
+                        id: "ecommerce",
+                        icon: "◉",
+                        name: "E-commerce",
+                        desc: "Tiendas en línea completas con pasarela de pago integrada.",
+                        price: 4200,
+                        unit: "proyecto",
+                        tags: [
+                            { label: "Shopify",     tooltip: "Tiendas en línea rápidas y listas para vender" },
+                            { label: "WooCommerce", tooltip: "E-commerce flexible sobre WordPress" },
+                            { label: "Custom",      tooltip: "Solución a medida según las necesidades de tu negocio" },
+                        ],
+                    },
             ];
 
             let cart = {};
@@ -300,7 +316,12 @@
                     <p>${s.desc}</p>
 
                     <div class="si-tags">
-                        ${s.tags.map((t) => `<span>${t}</span>`).join("")}
+                        ${s.tags.map(t => `
+                            <span style="position:relative;">
+                                ${t.label}
+                                <span class="tooltip">${t.tooltip}</span>
+                            </span>
+                        `).join("")}
                     </div>
                 </div>
             </div>
@@ -502,11 +523,9 @@
 
             function sendInvoice() {
                 const name = document.getElementById("senderName").value.trim();
-
-                const email = document
-                    .getElementById("senderEmail")
-                    .value.trim();
-
+                const email = document.getElementById("senderEmail").value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const isValidEmail = emailRegex.test(email);
                 const company = document
                     .getElementById("senderCompany")
                     .value.trim();
@@ -517,8 +536,8 @@
 
                 const btn = document.getElementById("sendBtn");
 
-                if (!name || !email) {
-                    btn.textContent = "⚠ Completa nombre y correo";
+                if (!name || !email || !isValidEmail) {
+                    showError(!name || !email ? "⚠ Completa nombre y correo" : "⚠ Ingresa un correo válido");
 
                     btn.style.background = "rgba(239,68,68,0.15)";
                     btn.style.color = "#f87171";
@@ -531,9 +550,23 @@
                         btn.style.color = "";
                         btn.style.border = "";
                     }, 2500);
+                    function showError(msg) {
+                        btn.textContent = msg;
+                        btn.style.background = "rgba(239,68,68,0.15)";
+                        btn.style.color = "#f87171";
+                        btn.style.border = "1px solid rgba(239,68,68,0.3)";
+                        setTimeout(() => {
+                            btn.textContent = "Enviar cotización al correo →";
+                            btn.style.background = "";
+                            btn.style.color = "";
+                            btn.style.border = "";
+                        }, 2500);
+                    }
 
                     return;
                 }
+
+          
 
                 const lines = Object.keys(cart)
                     .map((id) => {
