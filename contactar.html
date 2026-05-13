@@ -11,99 +11,6 @@
             rel="stylesheet"
         />
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-        <script>
-            const EMAILJS_PUBLIC_KEY = "MqUt4RkwN2KsdE6A-";
-            const EMAILJS_SERVICE_ID = "service_xg1rba6";
-            const EMAILJS_TEMPLATE_ID = "template_hp477aj";
-
-            emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-                function submitForm() {
-                    const nombre      = document.getElementById("nombre").value.trim();
-                    const cargo       = document.getElementById("cargo").value.trim();
-                    const empresa     = document.getElementById("empresa").value.trim();
-                    const email       = document.getElementById("senderEmail").value.trim();
-                    const tel         = document.getElementById("tel").value.trim();
-                    const ciudad      = document.getElementById("ciudad").value.trim();
-                    const presupuesto = document.getElementById("presupuesto").value;
-                    const comentarios = document.getElementById("comentarios").value.trim();
-                    const btn         = document.getElementById("submitBtn");
-
-                    const servicios = [...document.querySelectorAll("#servicesCheck input:checked")]
-                        .map(cb => cb.value)
-                        .join(", ");
-
-                    function showError(msg) {
-                        btn.textContent = msg;
-                        btn.style.background = "rgba(239,68,68,0.15)";
-                        btn.style.color = "#f87171";
-                        btn.style.border = "1px solid rgba(239,68,68,0.3)";
-                        setTimeout(() => {
-                            btn.textContent = "Enviar →";
-                            btn.style.background = "";
-                            btn.style.color = "";
-                            btn.style.border = "";
-                        }, 2500);
-                    }
-
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                    if (!nombre || !cargo || !empresa || !email) {
-                        showError("⚠ Completa los campos obligatorios");
-                        return;
-                    }
-                    if (!emailRegex.test(email)) {
-                        showError("⚠ Ingresa un correo válido");
-                        return;
-                    }
-                    if (!servicios) {
-                        showError("⚠ Selecciona al menos un servicio");
-                        return;
-                    }
-
-                    btn.textContent = "Enviando...";
-                    btn.disabled = true;
-
-                    const templateParams = {
-                        nombre,
-                        to_email: email,
-                        cargo,
-                        empresa,
-                        email,
-                        tel:         tel || "No proporcionado",
-                        ciudad:      ciudad || "No proporcionado",
-                        servicios,
-                        presupuesto: presupuesto || "No especificado",
-                        comentarios: comentarios || "Sin comentarios"
-                    };
-
-                        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                        .then(() => {
-                            btn.textContent = "✓ Enviado correctamente";
-                            btn.style.background = "rgba(163,230,53,0.15)";
-                            btn.style.color = "#a3e635";
-                            btn.style.border = "1px solid rgba(163,230,53,0.3)";
-                            btn.disabled = false;
-
-                        ["nombre","cargo","empresa","senderEmail","tel","ciudad","comentarios"]
-                            .forEach(id => document.getElementById(id).value = "");
-                            document.getElementById("presupuesto").value = "";
-                            document.querySelectorAll("#servicesCheck input")
-                                .forEach(cb => cb.checked = false);
-
-                            setTimeout(() => {
-                                btn.textContent = "Enviar →";
-                                btn.style.background = "";
-                                btn.style.color = "";
-                                btn.style.border = "";
-                            }, 3000);
-                        })
-                        .catch(() => {
-                            showError("⚠ Error al enviar, intenta de nuevo");
-                            btn.disabled = false;
-                        });
-                }
-        </script>
     </head>
     <body>
         <header class="nav-wrapper">
@@ -421,5 +328,102 @@
         </footer>
 
         <script defer src="js/main.js"></script>
+        <script defer src="js/main.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>
+            const EMAILJS_PUBLIC_KEY = "MqUt4RkwN2KsdE6A-";
+            const EMAILJS_SERVICE_ID = "service_xg1rba6";
+            const EMAILJS_TEMPLATE_ID = "template_hp477aj";
+
+            emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+            function submitForm() {
+                const nombre      = document.getElementById("nombre").value.trim();
+                const cargo       = document.getElementById("cargo").value.trim();
+                const empresa     = document.getElementById("empresa").value.trim();
+                const email       = document.getElementById("senderEmail").value.trim();
+                const tel         = document.getElementById("tel").value.trim();
+                const ciudad      = document.getElementById("ciudad").value.trim();
+                const presupuesto = document.getElementById("presupuesto").value;
+                const comentarios = document.getElementById("comentarios").value.trim();
+                const btn         = document.getElementById("submitBtn");
+
+                const servicios = [...document.querySelectorAll("#servicesCheck input:checked")]
+                    .map(cb => cb.value)
+                    .join(", ");
+
+                function showError(msg) {
+                    btn.textContent = msg;
+                    btn.style.background = "rgba(239,68,68,0.15)";
+                    btn.style.color = "#f87171";
+                    btn.style.border = "1px solid rgba(239,68,68,0.3)";
+                    setTimeout(() => {
+                        btn.textContent = "Enviar →";
+                        btn.style.background = "";
+                        btn.style.color = "";
+                        btn.style.border = "";
+                    }, 2500);
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!nombre || !cargo || !empresa || !email) {
+                    showError("⚠ Completa los campos obligatorios");
+                    return;
+                }
+                if (!emailRegex.test(email)) {
+                    showError("⚠ Ingresa un correo válido");
+                    return;
+                }
+                if (!servicios) {
+                    showError("⚠ Selecciona al menos un servicio");
+                    return;
+                }
+
+                btn.textContent = "Enviando...";
+                btn.disabled = true;
+
+                const templateParams = {
+                    nombre,
+                    cargo,
+                    empresa,
+                    email,
+                    tel:         tel || "No proporcionado",
+                    ciudad:      ciudad || "No proporcionado",
+                    servicios,
+                    presupuesto: presupuesto || "No especificado",
+                    comentarios: comentarios || "Sin comentarios"
+                };
+
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(() => {
+                        btn.textContent = "✓ Enviado correctamente";
+                        btn.style.background = "rgba(163,230,53,0.15)";
+                        btn.style.color = "#a3e635";
+                        btn.style.border = "1px solid rgba(163,230,53,0.3)";
+                        btn.disabled = false;
+
+                        ["nombre","cargo","empresa","senderEmail","tel","ciudad","comentarios"]
+                            .forEach(id => document.getElementById(id).value = "");
+                        document.getElementById("presupuesto").value = "";
+                        document.querySelectorAll("#servicesCheck input")
+                            .forEach(cb => cb.checked = false);
+
+                        setTimeout(() => {
+                            btn.textContent = "Enviar →";
+                            btn.style.background = "";
+                            btn.style.color = "";
+                            btn.style.border = "";
+                        }, 3000);
+                    })
+                    .catch(() => {
+                        showError("⚠ Error al enviar, intenta de nuevo");
+                        btn.disabled = false;
+                    });
+            }
+        </script>
+    </body>
+</html>
     </body>
 </html>
